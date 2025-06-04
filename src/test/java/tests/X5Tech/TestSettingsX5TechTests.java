@@ -21,18 +21,24 @@ public class TestSettingsX5TechTests {
     static String SELENOID_LOGIN = System.getProperty("selenoid.login");
     static String SELENOID_PASSWORD = System.getProperty("selenoid.password");
     @BeforeAll
-    static void settingsForBrowserMegaMarketTests() {
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://x5.tech/";
+    static void settingsForBrowserDemoQa() {
+        Configuration.browserSize = System.getProperty("browser.size", "1920x1080");
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browser.version", "128.0");
         Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = "https://" + SELENOID_LOGIN + ":" + SELENOID_PASSWORD + "@" + SELENOID_URL + "/wd/hub";
+        Configuration.baseUrl = "https://x5.tech";
+    }
+    @BeforeEach
+    void beforeEach(){
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
                 "enableVideo", true
         ));
+        Configuration.remote = "https://" + SELENOID_LOGIN + ":" + SELENOID_PASSWORD + "@" + SELENOID_URL + "/wd/hub";
         Configuration.browserCapabilities = capabilities;
+        Configuration.holdBrowserOpen = false;
     }
 
     @AfterEach
@@ -42,8 +48,8 @@ public class TestSettingsX5TechTests {
         Attach.browserConsoleLogs();
         Attach.addVideo();
         Selenide.closeWebDriver();
-
     }
+
     public TestSettingsX5TechTests openPage() {
         open("");
         return this;
