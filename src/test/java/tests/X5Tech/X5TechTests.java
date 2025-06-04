@@ -1,4 +1,4 @@
-package tests.megamarket;
+package tests.X5Tech;
 
 import org.junit.jupiter.api.*;
 
