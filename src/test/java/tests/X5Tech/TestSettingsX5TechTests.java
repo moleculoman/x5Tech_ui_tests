@@ -56,11 +56,8 @@ public class TestSettingsX5TechTests {
         return this;
     }
 
-    /*public TestSettingsX5TechTests acceptCookies() {
-        executeJavaScript(
-                "var button = document.querySelector('button:contains(\"Хорошо\")');" +
-                        "if (button) { button.click(); }"
-        );
+    public TestSettingsX5TechTests removeBanners() {
+        executeJavaScript("document.querySelector('body > div.overflow-x-clip > div > section > div').remove();");
         return this;
-    }*/
+    }
 }
