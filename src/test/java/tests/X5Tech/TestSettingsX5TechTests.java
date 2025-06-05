@@ -56,8 +56,8 @@ public class TestSettingsX5TechTests {
         return this;
     }
 
-    public TestSettingsX5TechTests removeBanners() {
-        executeJavaScript("document.querySelector('body > div.overflow-x-clip > div > section > div').remove();");
+    public TestSettingsX5TechTests acceptCookies() {
+        executeJavaScript("document.querySelector('body > div.overflow-x-clip > div > section > div').click();");
         return this;
     }
 }
