@@ -37,9 +37,10 @@ public class X5TechTests extends TestSettingsX5TechTests {
     void shouldHaveRemoteWork(String jobCondition) {
         $(By.xpath("//span[contains(text(),'О нас')]")).click();
         removeBanners();
+
         $$("button:nth-child(6)")
                 .findBy(text(jobCondition))
-                .shouldBe(visible)
+                .shouldBe(visible).scrollTo()
                 .shouldHave(text(jobCondition));
     }
 
