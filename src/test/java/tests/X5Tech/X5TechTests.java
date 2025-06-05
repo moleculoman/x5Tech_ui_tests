@@ -67,10 +67,10 @@ public class X5TechTests extends TestSettingsX5TechTests {
     @DisplayName("TC_4: Проверка наличия направления \"DevOps\" во вкладке - \"Публикации\"")
     void siteShouldHaveCertainPublications(String direction, String keyWord)
     {
-        $(By.xpath("//span[contains(text(),'Публикации')]")).click();
+        $(By.xpath("//span[contains(text(),'Публикации')]")).shouldBe(visible).click();
         removeBanners();
-        $(By.xpath("//span[contains(text(),'Все направления')]")).click();
-        $(By.xpath("//span[contains(text(), '" + direction + "')]")).click();
+        $(By.xpath("//span[contains(text(),'Все направления')]")).shouldBe(visible).click();
+        $(By.xpath("//span[contains(text(), '" + direction + "')]")).shouldBe(visible).click();
         $(By.xpath("//a[contains(text(), '" + keyWord + "')]")).shouldBe(visible);
     }
 
