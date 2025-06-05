@@ -70,7 +70,7 @@ public class X5TechTests extends TestSettingsX5TechTests {
         $(By.xpath("//span[contains(text(),'Публикации')]")).shouldBe(visible).click();
         removeBanners();
         $(By.xpath("//span[contains(text(),'Все направления')]")).shouldBe(visible).click();
-        $(By.xpath("//span[contains(text(), '" + direction + "')]")).shouldBe(visible).click();
+        $(By.xpath("//span[@title='Тестирование' and text()='Тестирование']")).shouldBe(visible).click();
         $(By.xpath("//a[contains(text(), '" + keyWord + "')]")).shouldBe(visible);
     }
 
