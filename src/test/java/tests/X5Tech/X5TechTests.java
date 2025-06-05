@@ -1,5 +1,6 @@
 package tests.X5Tech;
 
+import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.*;
 
 import org.junit.jupiter.params.ParameterizedTest;
@@ -54,24 +55,28 @@ public class X5TechTests extends TestSettingsX5TechTests {
         $(By.xpath("//span[contains(text(), 'Технологии и решения')]")).click();
         removeBanners();
         $(By.xpath("//div[@class='simplebar-content']//span[text()='" + section + "']")).click();
-        $(By.xpath("//label[contains(text(), '" + generalSubSection + "')]")).shouldBe(exist);
-        $(By.xpath("//label[contains(text(), '" + javaSubSection + "')]")).shouldBe(exist);
-        $(By.xpath("//label[contains(text(), '" + pythonSubSection + "')]")).shouldBe(exist);
+        $(By.xpath("//label[contains(text(), '" + generalSubSection + "')]")).shouldBe(exist).click();
+        $(By.xpath("//label[contains(text(), '" + javaSubSection + "')]")).shouldBe(exist).click();
+        $(By.xpath("//label[contains(text(), '" + pythonSubSection + "')]")).shouldBe(exist).click();
     }
 
-    @CsvSource(value = {
-            "DevOps, devops"
+    @ValueSource(strings = {
+            "DevOps"
     })
     @ParameterizedTest(name = "Должна быть вкладка со значением {0} и со значениями {1}")
     @Tag("MINOR")
     @DisplayName("TC_4: Проверка наличия направления \"DevOps\" во вкладке - \"Публикации\"")
-    void siteShouldHaveCertainPublications(String direction, String keyWord)
+    void siteShouldHaveCertainPublications(String direction)
     {
         $(By.xpath("//span[contains(text(),'Публикации')]")).shouldBe(visible).click();
+        sleep(5000);
+        $(By.xpath("//span[text()='Все направления']")).shouldBe(exist).click();
+        $(By.xpath("//span[text()='" + direction + "']")).shouldBe(visible).click();
         removeBanners();
-        $(By.xpath("//span[contains(text(),'Все направления')]")).shouldBe(visible).click();
-        $(By.xpath("//span[@title='Тестирование' and text()='Тестирование']")).shouldBe(visible).click();
-        $(By.xpath("//a[contains(text(), '" + keyWord + "')]")).shouldBe(visible);
+        SelenideElement publicationsCountElement = $(By.xpath("//h1[text()='Публикации']/following-sibling::span"));
+        String publicationsCountText = publicationsCountElement.getText();
+        int publicationsCount = Integer.parseInt(publicationsCountText);
+        Assertions.assertTrue(publicationsCount > 0, "Количество публикаций должно быть больше нуля");
     }
 
     @ValueSource(strings = {
@@ -82,8 +87,9 @@ public class X5TechTests extends TestSettingsX5TechTests {
     @DisplayName("TC_5: Проверка поисковой строки по логическому совпадению наименования вакансии")
     void siteShouldHaveVacancy(String vacancyName)
     {
+        sleep(5000);
         $(By.xpath("//input[@placeholder='Поиск']")).setValue(vacancyName).pressEnter();
         removeBanners();
-        $(("a[title*='" + vacancyName + "']")).shouldBe(visible);
+        $(By.xpath("//a[contains(@title, '" + vacancyName + "')]")).shouldBe(visible);
     }
 }
