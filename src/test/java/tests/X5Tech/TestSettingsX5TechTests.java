@@ -56,11 +56,11 @@ public class TestSettingsX5TechTests {
         return this;
     }
 
-    public TestSettingsX5TechTests acceptCookies() {
+    /*public TestSettingsX5TechTests acceptCookies() {
         executeJavaScript(
                 "var button = document.querySelector('button:contains(\"Хорошо\")');" +
                         "if (button) { button.click(); }"
         );
         return this;
-    }
+    }*/
 }
