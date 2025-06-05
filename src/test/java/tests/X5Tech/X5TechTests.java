@@ -34,8 +34,8 @@ public class X5TechTests extends TestSettingsX5TechTests {
     @DisplayName("TC_2: Проверка наличия возможности работать удаленно среди условий работы")
 
     void shouldHaveRemoteWork(String jobCondition) {
-        removeBanners();
         $(By.xpath("//span[contains(text(),'О нас')]")).click();
+        removeBanners();
         $$("button:nth-child(6)")
                 .findBy(text(jobCondition))
                 .shouldBe(visible)
@@ -51,8 +51,8 @@ public class X5TechTests extends TestSettingsX5TechTests {
     void siteShouldHaveCertainSections(String section, String generalSubSection,
                                                String javaSubSection, String pythonSubSection)
     {
-        removeBanners();
         $(By.xpath("//span[contains(text(), 'Технологии и решения')]")).click();
+        removeBanners();
         $(By.xpath("//div[@class='simplebar-content']//span[text()='" + section + "']")).click();
         $(By.xpath("//label[contains(text(), '" + generalSubSection + "')]")).shouldBe(exist);
         $(By.xpath("//label[contains(text(), '" + javaSubSection + "')]")).shouldBe(exist);
@@ -67,8 +67,8 @@ public class X5TechTests extends TestSettingsX5TechTests {
     @DisplayName("TC_4: Проверка наличия направления \"Тестирование\" во вкладке - \"Публикации\"")
     void siteShouldHaveCertainPublications(String direction, String keyWord)
     {
-        removeBanners();
         $(By.xpath("//span[contains(text(),'Публикации')]")).click();
+        removeBanners();
         $(By.xpath("//span[contains(text(),'Все направления')]")).click();
         $(By.xpath("//span[contains(text(), '" + direction + "')]")).click();
         $(By.xpath("//a[contains(text(), '" + keyWord + "')]")).shouldBe(visible);
@@ -82,8 +82,8 @@ public class X5TechTests extends TestSettingsX5TechTests {
     @DisplayName("TC_5: Проверка поисковой строки по логическому совпадению наименования вакансии")
     void siteShouldHaveVacancy(String vacancyName)
     {
-        removeBanners();
         $(By.xpath("//input[@placeholder='Поиск']")).setValue(vacancyName).pressEnter();
+        removeBanners();
         $(("a[title*='" + vacancyName + "']")).shouldBe(visible);
     }
 }
