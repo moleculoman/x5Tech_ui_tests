@@ -60,11 +60,11 @@ public class X5TechTests extends TestSettingsX5TechTests {
     }
 
     @CsvSource(value = {
-            "Тестирование, тест"
+            "DevOps, devops"
     })
     @ParameterizedTest(name = "Должна быть вкладка со значением {0} и со значениями {1}")
     @Tag("MINOR")
-    @DisplayName("TC_4: Проверка наличия направления \"Тестирование\" во вкладке - \"Публикации\"")
+    @DisplayName("TC_4: Проверка наличия направления \"DevOps\" во вкладке - \"Публикации\"")
     void siteShouldHaveCertainPublications(String direction, String keyWord)
     {
         $(By.xpath("//span[contains(text(),'Публикации')]")).click();
