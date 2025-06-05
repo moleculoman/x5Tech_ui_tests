@@ -42,6 +42,7 @@ public class X5TechTests extends TestSettingsX5TechTests {
                 .findBy(text(jobCondition))
                 .shouldBe(visible).scrollTo()
                 .shouldHave(text(jobCondition));
+        sleep(3000);
     }
 
     @CsvSource(value = {
