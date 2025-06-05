@@ -57,7 +57,7 @@ public class TestSettingsX5TechTests {
     }
 
     public TestSettingsX5TechTests acceptCookies() {
-        executeJavaScript("document.querySelector('body > div.overflow-x-clip > div > section > div').click();");
+        executeJavaScript("button:contains('Хорошо')");
         return this;
     }
 }
