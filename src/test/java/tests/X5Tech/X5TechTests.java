@@ -35,6 +35,7 @@ public class X5TechTests extends TestSettingsX5TechTests {
 
     void shouldHaveRemoteWork(String jobCondition) {
         $(By.xpath("//span[contains(text(),'О нас')]")).click();
+        removeBanners();
         $$("button:nth-child(6)")
                 .findBy(text(jobCondition))
                 .shouldBe(visible)
@@ -51,6 +52,7 @@ public class X5TechTests extends TestSettingsX5TechTests {
                                                String javaSubSection, String pythonSubSection)
     {
         $(By.xpath("//span[contains(text(), 'Технологии и решения')]")).click();
+        removeBanners();
         $(By.xpath("//div[@class='simplebar-content']//span[text()='" + section + "']")).click();
         $(By.xpath("//label[contains(text(), '" + generalSubSection + "')]")).shouldBe(exist);
         $(By.xpath("//label[contains(text(), '" + javaSubSection + "')]")).shouldBe(exist);
@@ -66,6 +68,7 @@ public class X5TechTests extends TestSettingsX5TechTests {
     void siteShouldHaveCertainPublications(String direction, String keyWord)
     {
         $(By.xpath("//span[contains(text(),'Публикации')]")).click();
+        removeBanners();
         $(By.xpath("//span[contains(text(),'Все направления')]")).click();
         $(By.xpath("//span[contains(text(), '" + direction + "')]")).click();
         $(By.xpath("//a[contains(text(), '" + keyWord + "')]")).shouldBe(visible);
@@ -80,6 +83,7 @@ public class X5TechTests extends TestSettingsX5TechTests {
     void siteShouldHaveVacancy(String vacancyName)
     {
         $(By.xpath("//input[@placeholder='Поиск']")).setValue(vacancyName).pressEnter();
+        removeBanners();
         $(("a[title*='" + vacancyName + "']")).shouldBe(visible);
     }
 }

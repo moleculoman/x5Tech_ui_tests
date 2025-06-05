@@ -14,6 +14,7 @@ import utils.Attach;
 
 import java.util.Map;
 
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TestSettingsX5TechTests {
@@ -52,6 +53,11 @@ public class TestSettingsX5TechTests {
 
     public TestSettingsX5TechTests openPage() {
         open("");
+        return this;
+    }
+
+    public TestSettingsX5TechTests removeBanners() {
+        executeJavaScript("document.querySelector('body > div.overflow-x-clip > div > section > div').remove();");
         return this;
     }
 }
