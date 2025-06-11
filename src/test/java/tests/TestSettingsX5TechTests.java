@@ -22,7 +22,7 @@ public class TestSettingsX5TechTests {
         Configuration.browser = System.getProperty("browser", "chrome");
         //Configuration.browserVersion = System.getProperty("browser.version", "127.0");
         Configuration.pageLoadStrategy = "eager";
-
+        Configuration.baseUrl = "https://x5.tech";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
