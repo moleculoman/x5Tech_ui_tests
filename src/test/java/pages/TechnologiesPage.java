@@ -1,3 +1,4 @@
+// pages/TechnologiesPage.java
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
@@ -6,57 +7,65 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
-public class TechnologiesPageAnchor {
-
-    public void checkTechnologiesPageAnchorText(String expectedText) {
+public class TechnologiesPage {
+    public TechnologiesPage checkTechnologiesPageAnchorText(String expectedText) {
         $(By.xpath("//span[contains(text(), '" + expectedText + "')]")).shouldHave(text(expectedText));
+        return this;
     }
 
     public SelenideElement getMainSectionElement(String section) {
         return $(By.xpath("//div[@class='simplebar-content']//span[text()='" + section + "']"));
     }
 
-    public void checkMainSection(String section) {
+    public TechnologiesPage checkMainSection(String section) {
         getMainSectionElement(section).shouldHave(text(section));
+        return this;
     }
 
-    public void clickOnMainSection(String section) {
+    public TechnologiesPage clickOnMainSection(String section) {
         getMainSectionElement(section).click();
+        return this;
     }
 
     public SelenideElement getGeneralSubSectionElement(String generalSubSection) {
         return $(By.xpath("//label[contains(text(), '" + generalSubSection + "')]"));
     }
 
-    public void checkGeneralSubSection(String generalSubSection) {
+    public TechnologiesPage checkGeneralSubSection(String generalSubSection) {
         getGeneralSubSectionElement(generalSubSection).shouldHave(text(generalSubSection));
+        return this;
     }
 
-    public void clickOnGeneralSubSection(String generalSubSection) {
+    public TechnologiesPage clickOnGeneralSubSection(String generalSubSection) {
         getGeneralSubSectionElement(generalSubSection).click();
+        return this;
     }
 
     public SelenideElement getFirstSubSectionElement(String firstSubSection) {
         return $(By.xpath("//label[contains(text(), '" + firstSubSection + "')]"));
     }
 
-    public void checkFirstSubSection(String firstSubSection) {
+    public TechnologiesPage checkFirstSubSection(String firstSubSection) {
         getFirstSubSectionElement(firstSubSection).shouldHave(text(firstSubSection));
+        return this;
     }
 
-    public void clickOnFirstSubSection(String firstSubSection) {
+    public TechnologiesPage clickOnFirstSubSection(String firstSubSection) {
         getFirstSubSectionElement(firstSubSection).click();
+        return this;
     }
 
     public SelenideElement getSecondSubSectionElement(String secondSubSection) {
         return $(By.xpath("//label[contains(text(), '" + secondSubSection + "')]"));
     }
 
-    public void checkSecondSubSection(String secondSubSection) {
+    public TechnologiesPage checkSecondSubSection(String secondSubSection) {
         getSecondSubSectionElement(secondSubSection).shouldHave(text(secondSubSection));
+        return this;
     }
 
-    public void clickOnSecondSubSection(String secondSubSection) {
+    public TechnologiesPage clickOnSecondSubSection(String secondSubSection) {
         getSecondSubSectionElement(secondSubSection).click();
+        return this;
     }
 }

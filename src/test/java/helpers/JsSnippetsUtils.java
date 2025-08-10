@@ -1,4 +1,4 @@
-package utils;
+package helpers;
 
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 

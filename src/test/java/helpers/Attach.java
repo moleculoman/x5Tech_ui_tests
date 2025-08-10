@@ -1,4 +1,4 @@
-package utils;
+package helpers;
 
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Attachment;
@@ -14,7 +14,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.openqa.selenium.logging.LogType.BROWSER;
 
 public class Attach {
-    private static final String SELENOID_URL = System.getProperty("SELENOID_URL");
+    private static final String SELENOID_URL = "selenoid.autotests.cloud";
 
     @Attachment(value = "{attachName}", type = "image/png")
     public static byte[] screenshotAs(String attachName) {
@@ -47,8 +47,6 @@ public class Attach {
 
     public static URL getVideoUrl() {
         String videoUrl = "https://" + SELENOID_URL + "/video/" + sessionId() + ".mp4";
-        //String videoUrl = "https://selenoid.autotests.cloud/video/" + sessionId() + ".mp4";
-
         try {
             return new URL(videoUrl);
         } catch (MalformedURLException e) {
