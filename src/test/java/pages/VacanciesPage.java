@@ -10,10 +10,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class VacanciesPage {
-
-    private SelenideElement vacanciesHeader =$(By.xpath("//span[contains(text(),\"Вакансии\")]"));
-
-    private ElementsCollection vacancyCards = $$("div:nth-child(6)");
+    private final SelenideElement vacanciesHeader = $(By.xpath("//span[contains(text(),\"Вакансии\")]"));
+    private final ElementsCollection vacancyCards = $$("div:nth-child(6)");
 
     public VacanciesPage verifyVacanciesPageLoaded() {
         vacanciesHeader.shouldBe(visible).shouldHave(text("Вакансии"));

@@ -9,14 +9,16 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class SearchField {
+    private final SelenideElement searchField = $(By.xpath("//input[@placeholder='Поиск']"));
+
     public SearchField checkSearchFieldAnchorTextTest(String placeholderName) {
-        $(By.xpath("//input[@placeholder=  '" + placeholderName + "']"))
-                .shouldHave(attribute("placeholder", placeholderName));
+        SelenideElement fieldElement = $(By.xpath("//input[@placeholder=  '" + placeholderName + "']"));
+        fieldElement.shouldHave(attribute("placeholder", placeholderName));
         return this;
     }
 
     public SelenideElement getSearchField() {
-        return $(By.xpath("//input[@placeholder='Поиск']")).shouldBe(clickable, Duration.ofSeconds(5));
+        return searchField.shouldBe(clickable, Duration.ofSeconds(5));
     }
 
     public SelenideElement clickOnSearchField() {
@@ -33,7 +35,8 @@ public class SearchField {
     }
 
     public SearchField checkResults(String vacancyName) {
-        $(By.xpath("//a[contains(@title, '" + vacancyName + "')]")).shouldBe(clickable, Duration.ofSeconds(10));
+        SelenideElement resultElement = $(By.xpath("//a[contains(@title, '" + vacancyName + "')]"));
+        resultElement.shouldBe(clickable, Duration.ofSeconds(10));
         return this;
     }
 }

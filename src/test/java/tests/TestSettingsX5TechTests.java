@@ -16,6 +16,9 @@ import java.util.Map;
 
 public class TestSettingsX5TechTests {
     private static final WebConfig webConfig = ConfigFactory.create(WebConfig.class, System.getProperties());
+    void closeSession(){
+        WebDriverRunner.getWebDriver().close();
+    }
 
     @BeforeAll
     public static void beforeAll() {
@@ -45,12 +48,9 @@ public class TestSettingsX5TechTests {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
+        closeSession();
+    }
 
-    }
-    @AfterEach
-    void closeSession(){
-        WebDriverRunner.getWebDriver().close();
-    }
     @BeforeEach
     void beforeEach(){
         SelenideLogger.addListener("allure", new AllureSelenide());

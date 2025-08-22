@@ -9,20 +9,24 @@ import static com.codeborne.selenide.Selenide.open;
 import static helpers.JsSnippetsUtils.removeBanners;
 
 public class MainPage {
+
     private final SelenideElement aboutLink = $(By.xpath("//span[contains(text(),'О нас')]"));
     private final SelenideElement technologiesLink = $(By.xpath("//span[contains(text(), 'Технологии и решения')]"));
     private final SelenideElement publicationsLink = $(By.xpath("//span[contains(text(), 'Публикации')]"));
     private final SelenideElement searchFieldLink = $(By.xpath("//input[@placeholder='Поиск']"));
+    private final SelenideElement pageDiv = $("div#page");
+    private final SelenideElement overflowDiv = $("div.overflow-x-clip");
+    private final SelenideElement footer = $("footer");
 
     public static MainPage openPage() {
-        open("https://x5.tech");
+        MainPage page = open("https://x5.tech  ", MainPage.class);
         removeBanners();
-        return new MainPage();
+        return page;
     }
 
     public MainPage mainStructureElementsExist() {
-        $("div#page").shouldBe(exist);
-        $("div.overflow-x-clip").shouldBe(exist);
+        pageDiv.shouldBe(exist);
+        overflowDiv.shouldBe(exist);
         return this;
     }
 
@@ -47,9 +51,8 @@ public class MainPage {
     }
 
     public MainPage verifyContactEmailExists(String expectedEmail) {
-        $(By.xpath("//footer//a[contains(@href, 'mailto:') and contains(text(), '" + expectedEmail + "')]"))
-                .shouldBe(visible).shouldHave(attribute("href", "mailto:" + expectedEmail));
+        SelenideElement emailLink = footer.find(By.xpath(".//a[contains(@href, 'mailto:') and contains(text(), '" + expectedEmail + "')]"));
+        emailLink.shouldBe(visible).shouldHave(attribute("href", "mailto:" + expectedEmail));
         return this;
     }
-
 }
